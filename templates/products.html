@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Каталог - Reezoldini Audio{% endblock %}
+
+{% block content %}
+    <section class="glass-container">
+        <h2>Каталог товаров</h2>
+        <div class="category-filters">
+            <a href="{{ url_for('products') }}" class="filter-btn {% if category == 'all' %}active{% endif %}">Все</a>
+            <a href="{{ url_for('products', category='headphones') }}" class="filter-btn {% if category == 'headphones' %}active{% endif %}">Наушники</a>
+            <a href="{{ url_for('products', category='amplifiers') }}" class="filter-btn {% if category == 'amplifiers' %}active{% endif %}">Усилители</a>
+            <a href="{{ url_for('products', category='speakers') }}" class="filter-btn {% if category == 'speakers' %}active{% endif %}">Акустика</a>
+        </div>
+        <div class="product-grid">
+            {% for product in products %}
+            <div class="product-card">
+                <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <p class="description">{{ product.description }}</p>
+                <p class="price">{{ product.price }} ₽</p>
+                <button class="cta-button">Подробнее</button>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}

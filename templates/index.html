@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Reezoldini Audio - Ваш путь к идеальному звуку{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Unbound <span>your sound</span> experience</h2>
+            <p>Откройте для себя новое измерение звука с нашей коллекцией премиального аудиооборудования. Каждый продукт создан для истинных ценителей качественного звучания.</p>
+            <a href="{{ url_for('products') }}" class="hero-link">Исследовать коллекцию →</a>
+        </div>
+        <div class="light-orb-container">
+            <div class="light-orb light-orb-1"></div>
+            <div class="light-orb light-orb-2"></div>
+            <div class="light-orb light-orb-3"></div>
+        </div>
+    </section>
+
+    <section class="featured-products glass-container">
+        <h2>Популярные товары</h2>
+        <div class="product-grid">
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='images/best-high-fidelity-headphones-1.jpg') }}" alt="Hi-Fi Наушники">
+                <h3>Hi-Fi Наушники</h3>
+                <p class="description">Профессиональные наушники с превосходным звучанием</p>
+                <p class="price">от 29,999 ₽</p>
+                <button class="cta-button">Подробнее</button>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='images/amplifier.jpg') }}" alt="Усилитель">
+                <h3>Усилители</h3>
+                <p class="description">Мощные усилители для идеального воспроизведения</p>
+                <p class="price">от 49,999 ₽</p>
+                <button class="cta-button">Подробнее</button>
+            </div>
+            <div class="product-card">
+                <img src="{{ url_for('static', filename='images/speaker-1.jpg') }}" alt="Акустика">
+                <h3>Акустические системы</h3>
+                <p class="description">Высококачественные акустические системы</p>
+                <p class="price">от 79,999 ₽</p>
+                <button class="cta-button">Подробнее</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="glass-container">
+        <h2>О нас</h2>
+        <p>Reezoldini Audio - это специализированный магазин высококачественного аудиооборудования. Мы предлагаем только лучшие бренды и модели, тщательно отобранные для истинных ценителей звука.</p>
+    </section>
+
+    <section id="features" class="glass-container">
+        <h2>Почему мы?</h2>
+        <div class="features-grid">
+            <div class="feature">
+                <h3>Экспертиза</h3>
+                <p>Профессиональные консультации от опытных специалистов</p>
+            </div>
+            <div class="feature">
+                <h3>Качество</h3>
+                <p>Только проверенные бренды и модели</p>
+            </div>
+            <div class="feature">
+                <h3>Гарантия</h3>
+                <p>Расширенная гарантия на все товары</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="glass-container">
+        <h2>Свяжитесь с нами</h2>
+        <div class="contact-info">
+            <p>Email: info@reezoldini-audio.ru</p>
+            <p>Телефон: +7 981 965-31-19
+            </p>
+            <p>Адрес: Санкт-Петербург, Кингисеппское шоссе53, Санкт-Петербург, Россия, 198320</p>
+        </div>
+    </section>
+{% endblock %}

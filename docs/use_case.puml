@@ -1,0 +1,45 @@
+@startuml REEZOLDINI Audio Use Case Diagram
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam defaultTextAlignment center
+skinparam charset UTF-8
+
+skinparam actorStyle awesome
+skinparam packageStyle rectangle
+skinparam shadowing false
+
+left to right direction
+
+actor "Посетитель" as Guest #white
+actor "Пользователь" as User #white
+actor "Администратор" as Admin #white
+actor "Система" as System #white
+
+rectangle "REEZOLDINI audio" {
+    usecase "Просмотр каталога" as UC1
+    usecase "Поиск продукции" as UC2
+    usecase "Просмотр информации" as UC3
+    usecase "Отправка запроса" as UC4
+    usecase "Управление каталогом" as UC5
+    usecase "Обработка заявок" as UC6
+    usecase "Отправка уведомлений" as UC7
+    usecase "Резервное копирование" as UC8
+}
+
+Guest --> UC1
+Guest --> UC2
+Guest --> UC3
+Guest --> UC4
+
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+
+Admin --> UC5
+Admin --> UC6
+
+System --> UC7
+System --> UC8
+
+@enduml
