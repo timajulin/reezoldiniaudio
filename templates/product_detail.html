@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }} - Детали товара{% endblock %}
+
+{% block content %}
+<section class="product-detail-section">
+    <div class="product-detail-card">
+        <div class="product-detail-image">
+            <div class="product-detail-image-inner">
+                <img src="/static/images/{{ product.image_url }}" alt="{{ product.name }}">
+            </div>
+            <button class="favorite-btn" title="Добавить в избранное">❤</button>
+        </div>
+        <div class="product-detail-info">
+            <h1>{{ product.name }}</h1>
+            <span class="product-tag">{{ product.category }}</span>
+            <div class="product-detail-price">
+                <span class="currency">₽</span>
+                <span class="price">{{ product.price }}</span>
+            </div>
+            <div class="product-detail-labels">
+                <div>
+                    <label>Дата добавления</label>
+                    <div class="select-value">{{ product.created_at.strftime('%d.%m.%Y') }}</div>
+                </div>
+            </div>
+            <button class="cta-button">Купить</button>
+            <div class="product-detail-faq">
+                <div class="faq-title" onclick="this.nextElementSibling.classList.toggle('open'); this.classList.toggle('open');">
+                    <span>Подробнее</span>
+                    <span class="arrow">&#9660;</span>
+                </div>
+                <div class="faq-content">
+                    <p>{{ product.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 

@@ -14,11 +14,11 @@
         <div class="product-grid">
             {% for product in products %}
             <div class="product-card">
-                <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                <img src="/static/images/{{ product.image_url }}" alt="{{ product.name }}">
                 <h3>{{ product.name }}</h3>
                 <p class="description">{{ product.description }}</p>
                 <p class="price">{{ product.price }} ₽</p>
-                <button class="cta-button">Подробнее</button>
+                <a class="cta-button" href="{{ url_for('product_detail', product_id=product.id) }}">Подробнее</a>
             </div>
             {% endfor %}
         </div>
