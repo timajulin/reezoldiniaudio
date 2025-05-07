@@ -24,7 +24,13 @@
                     <div class="select-value">{{ product.created_at.strftime('%d.%m.%Y') }}</div>
                 </div>
             </div>
-            <button class="cta-button">Купить</button>
+            {% if current_user.is_authenticated %}
+            <form method="post" action="{{ url_for('add_to_cart', product_id=product.id) }}">
+                <button type="submit" class="cta-button">Добавить в корзину</button>
+            </form>
+            {% else %}
+            <a href="{{ url_for('login', next=request.path) }}" class="cta-button">Войти, чтобы купить</a>
+            {% endif %}
             <div class="product-detail-faq">
                 <div class="faq-title" onclick="this.nextElementSibling.classList.toggle('open'); this.classList.toggle('open');">
                     <span>Подробнее</span>

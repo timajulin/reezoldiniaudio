@@ -18,7 +18,14 @@
                 <a href="{{ url_for('products') }}" class="nav-link {% if request.endpoint == 'products' %}active{% endif %}">Каталог</a>
                 <a href="{{ url_for('about') }}" class="nav-link {% if request.endpoint == 'about' %}active{% endif %}">О нас</a>
                 <a href="{{ url_for('contact') }}" class="nav-link {% if request.endpoint == 'contact' %}active{% endif %}">Контакты</a>
-                <button class="login-btn">Войти</button>
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('cart') }}" class="nav-link">Корзина ({{ current_user.cart_items|length }})</a>
+                    <span style="color:#fff; margin-left:1rem;">👤 {{ current_user.username }}</span>
+                    <a href="{{ url_for('logout') }}" class="nav-link">Выйти</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="nav-link">Войти</a>
+                    <a href="{{ url_for('register') }}" class="nav-link">Регистрация</a>
+                {% endif %}
             </nav>
         </div>
     </header>

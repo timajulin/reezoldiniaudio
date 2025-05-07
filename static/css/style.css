@@ -33,6 +33,19 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+form, .glass-container form, .glass-container {
+    position: relative !important;
+    z-index: 10000 !important;
+    pointer-events: auto !important;
+    opacity: 1 !important;
+}
+
+input, button, label, .form-control {
+    pointer-events: auto !important;
+    opacity: 1 !important;
+    z-index: 10001 !important;
+}
+
 /* Light effect */
 .light-effect {
     position: fixed;

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %}Корзина{% endblock %}
+{% block content %}
+<div class="glass-container" style="max-width: 1000px; margin: 5rem auto 5rem auto;">
+    <h2>Ваша корзина</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% if cart_items|length == 0 %}
+        <p>Корзина пуста.</p>
+    {% else %}
+    <form method="post">
+        <table style="width:100%; margin-bottom:1.5rem;">
+            <tr>
+                <th>Товар</th>
+                <th>Цена</th>
+                <th>Кол-во</th>
+                <th>Сумма</th>
+                <th></th>
+            </tr>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.product.price }} ₽</td>
+                <td><input type="number" name="quantity_{{ item.id }}" value="{{ item.quantity }}" min="1" style="width:60px;"></td>
+                <td>{{ (item.product.price * item.quantity)|round(2) }} ₽</td>
+                <td><button name="remove_{{ item.id }}" value="1" class="cta-button" style="padding:0.3rem 0.7rem; font-size:0.9rem;">Удалить</button></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div style="text-align:right; font-size:1.2rem; margin-bottom:1.5rem;">Итого: <b>{{ total|round(2) }} ₽</b></div>
+        
+        <a href="{{ url_for('checkout') }}" type="submit" class="cta-button">Оформить заказ</a>
+    </form>
+    {% endif %}
+</div>
+{% endblock %} 

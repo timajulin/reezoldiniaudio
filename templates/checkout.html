@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}Оформление заказа{% endblock %}
+{% block content %}
+<div class="glass-container" style="max-width: 1000px; margin: 5rem auto 5rem auto;">
+    <h2>Оформление заказа</h2>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% if cart_items|length == 0 %}
+        <p>Корзина пуста.</p>
+    {% else %}
+    <form method="post">
+        <table style="width:100%; margin-bottom:1.5rem;">
+            <tr>
+                <th>Товар</th>
+                <th>Цена</th>
+                <th>Кол-во</th>
+                <th>Сумма</th>
+            </tr>
+            {% for item in cart_items %}
+            <tr>
+                <td>{{ item.product.name }}</td>
+                <td>{{ item.product.price }} ₽</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ (item.product.price * item.quantity)|round(2) }} ₽</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div style="text-align:right; font-size:1.2rem; margin-bottom:1.5rem;">Итого: <b>{{ total|round(2) }} ₽</b></div>
+        <button type="submit" class="cta-button" style="background:#28a745;">Подтвердить заказ</button>
+    </form>
+    {% endif %}
+</div>
+{% endblock %} 
